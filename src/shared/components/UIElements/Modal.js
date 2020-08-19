@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 
-import Backdrop from "./Backdrop";
+import Backdrop from './Backdrop';
 
-import "./Modal.css";
+import './Modal.css';
 
 const ModalOverlay = (props) => {
   const content = (
@@ -26,23 +26,21 @@ const ModalOverlay = (props) => {
       </form>
     </div>
   );
-  return ReactDOM.createPortal(content, document.getElementById("modal-hook"));
+  return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
 };
 
-const Modal = (props) => {
-  return (
-    <React.Fragment>
-      {props.show && <Backdrop onClick={props.onCancel} />}
-      <CSSTransition
-        in={props.show}
-        mountOnEnter
-        unmountOnExit
-        timeout={200}
-        classNames="modal"
-      >
-        <ModalOverlay {...props} />
-      </CSSTransition>
-    </React.Fragment>
-  );
-};
+const Modal = (props) => (
+  <>
+    {props.show && <Backdrop onClick={props.onCancel} />}
+    <CSSTransition
+      in={props.show}
+      mountOnEnter
+      unmountOnExit
+      timeout={200}
+      classNames="modal"
+    >
+      <ModalOverlay {...props} />
+    </CSSTransition>
+  </>
+);
 export default Modal;
