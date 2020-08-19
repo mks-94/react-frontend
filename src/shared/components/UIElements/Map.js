@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
-import "./Map.css";
+import './Map.css';
 
 const Map = (props) => {
   const mapRef = useRef();
@@ -17,7 +17,7 @@ const Map = (props) => {
       ],
       view: new window.ol.View({
         center: window.ol.proj.fromLonLat([center.lng, center.lat]),
-        zoom: zoom,
+        zoom,
       }),
     });
   }, [center, zoom]);
@@ -28,7 +28,7 @@ const Map = (props) => {
       className={`map ${props.className}`}
       style={props.style}
       id="map"
-    ></div>
+    />
   );
 };
 
