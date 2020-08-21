@@ -1,36 +1,37 @@
-import React from 'react';
-import Input from '../../shared/components/FormElements/Input';
-import Button from '../../shared/components/FormElements/Button';
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
-import { useForm } from '../../shared/hooks/fom-hook'
+import React from "react";
+import Input from "../../shared/components/FormElements/Input";
+import Button from "../../shared/components/FormElements/Button";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH,
+} from "../../shared/util/validators";
+import { useForm } from "../../shared/hooks/form-hook";
 
-import './PlaceForm.css';
-
+import "./PlaceForm.css";
 
 const NewPlace = () => {
   const [formState, inputHandler] = useForm(
     {
       title: {
-        value: '',
-        isVAlid: false
+        value: "",
+        isVAlid: false,
       },
       description: {
-        value: '',
-        isVAlid: false
+        value: "",
+        isVAlid: false,
       },
       address: {
-        value: '',
-        isValid: false
-      }
+        value: "",
+        isValid: false,
+      },
     },
     false
-  )
-
+  );
 
   const placeSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs); //Send this to the backend
-  }
+  };
 
   return (
     <form className="place-form" onSubmit={placeSubmitHandler}>
@@ -63,7 +64,7 @@ const NewPlace = () => {
         ADD PLACE
       </Button>
     </form>
-  )
+  );
 };
 
 export default NewPlace;
