@@ -64,6 +64,7 @@ const UpdatePlace = () => {
 
   const placeUpdateSubmitHandler = async (event) => {
     event.preventDefault();
+    console.log(auth, "Is token coming");
     try {
       await sendRequest(
         `http://localhost:5000/api/places/${placeId}`,
@@ -74,6 +75,7 @@ const UpdatePlace = () => {
         }),
         {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token,
         }
       );
       history.push("/" + auth.userId + "/places");
