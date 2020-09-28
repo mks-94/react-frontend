@@ -4,7 +4,6 @@ import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
@@ -49,7 +48,6 @@ const NewPlace = () => {
       formData.append("title", formState.inputs.title.value);
       formData.append("description", formState.inputs.description.value);
       formData.append("address", formState.inputs.address.value);
-      formData.append("creator", auth.userId);
       formData.append("image", formState.inputs.image.value);
       console.log(auth, "Is auth coming");
       await sendRequest("http://localhost:5000/api/places", "POST", formData, {
@@ -63,7 +61,6 @@ const NewPlace = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <form className="place-form" onSubmit={placeSubmitHandler}>
-        {isLoading && <LoadingSpinner asOveray />}
         <Input
           id="title"
           element="input"
